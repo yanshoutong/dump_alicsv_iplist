@@ -47,7 +47,7 @@ fn parse_args() -> Config {
 
 fn main() {
     let result = parse_args();
-    println!("{:#?}", result);
+    // println!("{:#?}", result);
 
     run(&result);
 }
