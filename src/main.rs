@@ -1,7 +1,8 @@
 extern crate clap;
-use clap::{App, Arg};
 
-use dumpip::Config;
+use clap::{App, Arg};
+use dumpip::config::Config;
+use dumpip::run;
 
 fn parse_args() -> Config {
     let matches = App::new("Dump IP List")
@@ -47,4 +48,6 @@ fn parse_args() -> Config {
 fn main() {
     let result = parse_args();
     println!("{:#?}", result);
+
+    run(&result);
 }
