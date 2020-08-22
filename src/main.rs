@@ -33,7 +33,7 @@ fn parse_args() -> Config {
         )
         .get_matches();
 
-    let prefix = matches.value_of("config").unwrap_or("ecs_");
+    let prefix = matches.value_of("prefix").unwrap_or("ecs_");
     let column = matches
         .value_of("column")
         .unwrap_or("1")
