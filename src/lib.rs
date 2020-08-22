@@ -1,20 +1,9 @@
-use clap::{App, Arg};
-use std::error::Error;
-use std::fs;
+pub mod config;
+mod csv_parser;
 
-#[derive(Debug)]
-pub struct Config {
-    pub filename: String,
-    pub prefix: String,
-    pub column: u8,
-}
-
-impl Config {
-    pub fn new(filename: &str, prefix: &str, column: u8) -> Self {
-        Config {
-            filename: String::from(filename),
-            prefix: String::from(prefix),
-            column: column,
-        }
+pub fn run(cfg: &config::Config) {
+    let results = csv_parser::read(cfg).unwrap();
+    for (index, record) in results.iter().enumerate() {
+        println!("{}{}  ansible_host={}  ansible_port=22", cfg.prefix, index, record);
     }
 }
